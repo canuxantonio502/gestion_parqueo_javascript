@@ -7,10 +7,17 @@
 ## 📌 Características Principales
 
 ### Sistema de Autenticación
-*   Inicio de sesión exclusivo para el rol de Administrador.
-*   Validación segura de credenciales.
-*   Opción para actualizar correo y contraseña de acceso.
-*   Persistencia de sesión mediante `LocalStorage`.
+*   Inicio de sesión para el Administrador y usuarios registrados.
+*   Registro de nuevos usuarios (nombre, email y contraseña).
+*   Validación de credenciales y prevención de emails duplicados.
+*   Opción para actualizar correo y contraseña de la cuenta activa.
+*   Persistencia de usuarios y sesión mediante `LocalStorage` (`admin`, `users`, `session`).
+*   El dashboard solo es accesible con una sesión activa.
+
+### Vista de Invitado
+*   Vista previa del dashboard (`guest.html`) con datos de ejemplo.
+*   Todas las funciones están bloqueadas: al intentar usarlas se invita a iniciar sesión o registrarse.
+*   Accesible desde el botón **Ver disponibilidad** de la página principal.
 
 ### Gestión de Vehículos (CRUD)
 *   Registro, lectura, actualización y eliminación de vehículos.
@@ -65,13 +72,17 @@ project/
 │
 ├── index.html
 ├── dashboard.html
+├── guest.html
 │
 ├── css/
 │   ├── index-style.css
 │   └── dashboard-style.css
 │
 ├── js/
-│   ├── login.js
+│   ├── lgn.js
+│   ├── session.js
+│   ├── guard.js
+│   ├── guest.js
 │   ├── dashboard.js
 │   ├── history.js
 │   ├── stats.js
