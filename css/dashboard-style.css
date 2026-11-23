@@ -581,3 +581,102 @@ tr:nth-child(even) {
     color: var(--text-colorx);
 }
 
+
+
+/* ================= VISTA DE INVITADO ================= */
+.guest-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: var(--secundary-color);
+    color: var(--text-color);
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.guest-banner h2 {
+    margin-bottom: 8px;
+}
+
+.guest-banner-actions,
+.auth-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-btn {
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: var(--free-color);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.auth-btn:hover {
+    background: var(--icons-color);
+}
+
+.auth-btn.secondary {
+    background: white;
+    color: var(--secundary-color);
+}
+
+.auth-btn.secondary:hover {
+    background: var(--text-color);
+}
+
+.auth-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.auth-box {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.auth-box h2 {
+    margin-bottom: 15px;
+    color: var(--back-color);
+}
+
+.auth-box p {
+    margin-bottom: 25px;
+    color: #475569;
+}
+
+.auth-icon {
+    font-size: 2.5rem;
+    color: var(--icons-color);
+    margin-bottom: 15px;
+}
+
+.auth-actions .auth-btn {
+    flex: 1;
+}
+
+.auth-box .auth-btn.secondary {
+    border: 2px solid #cbd5e1;
+}
+
+@media (max-width: 768px) {
+    .guest-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

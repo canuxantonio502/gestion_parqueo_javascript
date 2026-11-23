@@ -94,13 +94,20 @@ body {
 
 #logoImg:hover,
 .logName:hover,
-#login-btn {
+#login-btn,
+#register-btn {
     transform: scale(1.05);
     transition: 0.3s;
     cursor: pointer;
 }
 
-#login-btn {
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+#login-btn,
+#register-btn {
     padding: 3px;
     border: none;
     background: linear-gradient(145deg,#2C4550,#3E5E68);
@@ -112,7 +119,8 @@ body {
     position: relative;
 }
 
-#login-btn::before {
+#login-btn::before,
+#register-btn::before {
     content: ""; /* Hace visible el pseudo-elemento */
     position: absolute;
     top: 0;
@@ -125,7 +133,8 @@ body {
     z-index: 1; /* Asegura que el pseudo-elemento esté encima del fondo */
 }
 
-#login-btn:hover::before {
+#login-btn:hover::before,
+#register-btn:hover::before {
     left: 130%
 }
 
@@ -394,9 +403,21 @@ footer {
     background: var(--icons-color);
 }
 
-#message {
+#message,
+#registerMessage {
     margin-top: 15px;
     text-align: center;
+    font-weight: bold;
+}
+
+.switch-auth {
+    margin-top: 20px;
+    text-align: center;
+    color: #475569;
+}
+
+.switch-auth a {
+    color: var(--free-color);
     font-weight: bold;
 }
 

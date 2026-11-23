@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vista previa - CampusParking</title>
+  <link rel="stylesheet" href="./css/dashboard-style.css">
+  <link rel="icon" href="./css/assets/logoIMG.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img id="logoImg" src="./css/assets/logoIMG.png" alt="Logo CampusParking">
+      <h2 style="font-family: 'Roboto Condensed', sans-serif;">ParkingControl</h2>
+    </div>
+    <nav class="menu">
+      <a href="#dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#vehiculos">
+        <i class="fa-solid fa-car"></i>
+        <span>Vehículos</span>
+      </a>
+      <a href="#espacios">
+        <i class="fa-solid fa-square-parking"></i>
+        <span>Espacios</span>
+      </a>
+      <a href="#historial">
+        <i class="fa-solid fa-chart-column"></i>
+        <span>Historial</span>
+      </a>
+      <a href="#reportes">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Reportes</span>
+      </a>
+      <a href="index.html?auth=login">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <span>Iniciar sesión</span>
+      </a>
+      <a href="index.html?auth=register">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>Registrarse</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="visible" id="dashboard">
+    <div class="topbar">
+      <h1 class="title">Dashboard</h1>
+      <div class="topbar-right">
+        <div class="earnings-card">
+          <span>Ganancias Totales</span>
+          <h3 id="totalEarnings">
+            Q0
+          </h3>
+        </div>
+        <div id="admin" data-locked>
+          <i class="fa-solid fa-lock"></i>
+          Invitado
+        </div>
+      </div>
+    </div>
+
+    <!-- Aviso de vista previa -->
+    <section class="guest-banner">
+      <div>
+        <h2>
+          <i class="fa-solid fa-eye"></i>
+          Modo vista previa
+        </h2>
+        <p>Estás viendo datos de ejemplo. Inicia sesión o regístrate para gestionar el parqueo.</p>
+      </div>
+      <div class="guest-banner-actions">
+        <a href="index.html?auth=login" class="auth-btn">Iniciar sesión</a>
+        <a href="index.html?auth=register" class="auth-btn secondary">Registrarse</a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2 id="activeCount">0</h2>
+        <p>Vehículos activos</p>
+      </div>
+      <div class="card">
+        <h2 id="carCount">0</h2>
+        <p>Carros activos</p>
+      </div>
+      <div class="card">
+        <h2 id="motoCount">0</h2>
+        <p>Motos activos</p>
+      </div>
+      <div class="card">
+        <h2 id="truckCount">0</h2>
+        <p>Camiones activos</p>
+      </div>
+      <div class="card">
+        <h2 id="occupiedCount">0</h2>
+        <p>/45</p>
+        <p>Espacios ocupados</p>
+      </div>
+    </section>
+
+    <section id="vehiculos" class="table-section">
+      <div class="table-header">
+        <h2>Vehículos parqueados</h2>
+        <button class="add-btn" data-locked>
+          <i class="fa-solid fa-lock"></i>
+          + Registrar vehículo
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Vehículo</th>
+            <th>Fecha</th>
+            <th>Hora entrada</th>
+            <th>Slot</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="guestVehiclesBody"></tbody>
+      </table>
+    </section>
+
+    <section id="espacios" class="parking-section">
+      <h2>Estado del parqueo</h2>
+      <div class="parking-category">
+        <h3>Carros</h3>
+        <div class="spaces" id="carSlots"></div>
+      </div>
+
+      <div class="parking-category">
+        <h3>Motos</h3>
+        <div class="spaces" id="motoSlots"></div>
+      </div>
+
+      <div class="parking-category">
+        <h3>Camiones</h3>
+        <div class="spaces" id="truckSlots"></div>
+      </div>
+    </section>
+
+    <!-- Historial -->
+    <section id="historial" class="table-section">
+      <div class="table-header">
+        <h2>Historial de parqueo</h2>
+        <input type="text" id="searchHistory" placeholder="Buscar placa..." readonly data-locked>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Tipo</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Tiempo</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </section>
+
+    <!-- Reportes -->
+    <section id="reportes" class="table-section">
+      <div class="table-header">
+        <h2>Reportes</h2>
+        <button class="select-btn" data-locked>
+          <i class="fa-solid fa-lock"></i>
+          Seleccionar rango de fechas
+        </button>
+      </div>
+      <p>Los reportes por rango de fechas están disponibles al iniciar sesión.</p>
+    </section>
+
+    <footer>
+      © 2026 CampusParkingControl | Sistema de gestión de parqueo
+    </footer>
+  </main>
+
+  <!-- ================= MODAL - ACCESO REQUERIDO ================= -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-box">
+      <span class="close-modal" id="closeAuthModal">
+        &times;
+      </span>
+      <i class="fa-solid fa-lock auth-icon"></i>
+      <h2>Acceso requerido</h2>
+      <p>Para usar esta función necesitas iniciar sesión o crear una cuenta.</p>
+      <div class="auth-actions">
+        <a href="index.html?auth=login" class="auth-btn">Iniciar sesión</a>
+        <a href="index.html?auth=register" class="auth-btn secondary">Registrarse</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/session.js"></script>
+  <script src="./js/guest.js"></script>
+</body>
+
+</html>
