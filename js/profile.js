@@ -6,14 +6,14 @@ const profileMessage = document.getElementById("profileMessage")
 const newEmail = document.getElementById("newEmail")
 const newPassword = document.getElementById("newPassword")
 
-let admin = JSON.parse(
-    localStorage.getItem("admin")
-)
+// Cuenta de la sesión activa
+const currentSession = getSession()
 
 adminBtn.addEventListener("click", () => {
+    const account = findAccount(currentSession.email)
     profileModal.style.display = "flex"
-    newEmail.value = admin.email
-    newPassword.value = admin.password
+    newEmail.value = account.email
+    newPassword.value = account.password
 })
 
 closeProfileModal.addEventListener("click", () => {
@@ -22,16 +22,24 @@ closeProfileModal.addEventListener("click", () => {
 
 profileForm.addEventListener("submit", e => {
     e.preventDefault()
-    admin.email = newEmail.value
-    admin.password = newPassword.value
-    localStorage.setItem(
-        "admin",
-        JSON.stringify(admin)
+    const updated = updateAccount(
+        currentSession.email,
+        newEmail.value.trim(),
+        newPassword.value
     )
+
+    if (!updated) {
+        profileMessage.style.color = "red"
+        profileMessage.textContent =
+            "El email ya está en uso"
+        return
+    }
+
     profileMessage.style.color = "green"
     profileMessage.textContent =
         "Credenciales actualizadas"
+    endSession()
     setTimeout(() => {
-        window.location.href = "../index.html"
+        window.location.href = "index.html?auth=login"
     },1500)
 })
