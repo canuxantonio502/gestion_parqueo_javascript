@@ -13,6 +13,8 @@
     href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="./js/session.js"></script>
+  <script src="./js/guard.js"></script>
 </head>
 
 <body>
@@ -42,7 +44,7 @@
         <i class="fa-solid fa-chart-line"></i>
         <span>Reportes</span>
       </a>
-      <a href="index.html">
+      <a href="index.html" id="logoutBtn">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Salir</span>
       </a>
@@ -234,7 +236,7 @@
       <span class="close-modal" id="closeProfileModal">
         &times;
       </span>
-      <h2>Perfil administrador</h2>
+      <h2>Mi perfil</h2>
       <form id="profileForm">
         <div class="form-group">
           <label>Nuevo email</label>
